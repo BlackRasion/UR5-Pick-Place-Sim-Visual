@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="box2_model">
+    <pose frame="">0 0 0.01 0 0 0</pose>
+    <link name="box2">
+      <inertial>
+        <pose>0 0 -0.01 0 0 0</pose>
+        <mass>0.0001</mass>
+        <inertia>
+          <ixx>1.065e-10</ixx>
+          <ixy>0.000027e-10</ixy>
+          <ixz>-0.002403e-10</ixz>
+          <iyy>1.066e-10</iyy>
+          <iyz>-0.000221e-10</iyz>
+          <izz>0.7979e-10</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.025 0.01 0.02</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>1000000.0</kp>
+              <kd>0.1</kd>
+              <min_depth>0.0001</min_depth>
+              <max_vel>1.0</max_vel>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.025 0.01 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+    </link>
+  </model>
+</sdf>

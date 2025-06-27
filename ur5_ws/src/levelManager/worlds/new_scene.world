@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<!-- SDF(Simulation Description Format)格式的世界文件 -->
+<sdf version="1.6">
+
+  <world name="ur5_world">
+    <!-- 加载ROS链接附件插件 -->
+    <plugin name="ros_link_attacher_plugin" filename="libgazebo_ros_link_attacher.so"/>
+    <!-- 定义GUI相机视角 -->
+    <gui>
+      <camera name="user_camera">
+        <pose>1.4 -2.3 1.4 0.0 0.25 1.9</pose>
+      </camera>
+    </gui>
+
+    <!-- 设置重力加速度 -->
+    <gravity>0 0 -9.81</gravity>
+
+    <!-- 物理引擎参数设置 -->
+    <physics name="default_physics" default="0" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <!-- 场景视觉效果设置 -->
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>false</shadows>
+    </scene>
+
+    <!-- Light Source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <!-- 定义桌子模型 -->
+    <model name="modern_table">
+      <static>true</static>
+      <include>
+        <uri>model://modern_table</uri>
+         <pose>0 -0.558 0 0 0 -3.1415926535</pose>
+      </include>
+    </model>
+
+    <!-- 定义机器人基座模型 -->
+    <model name="robot_base">
+      <static>true</static>
+      <include>
+        <uri>model://robot_base</uri>
+         <pose>0 0 -0.010370 0 0 0</pose>
+      </include>
+    </model>
+
+    <!-- 定义Kinect相机模型(用于视觉检测) -0.58 -0.528 -0.437720 -0.50-->
+    <model name="kinect">
+      <static>true</static>
+      <include>
+        <uri>model://kinect</uri>
+        <pose>-0.44 -0.50 1.58 1.58 1.57079 0</pose>
+      </include>
+    </model>
+
+  </world>
+</sdf>
